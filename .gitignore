@@ -1,0 +1,10 @@
+node_modules/
+__pycache__/
+*.pyc
+.env
+.idea/
+*.egg-info/
+dist/
+.pytest_cache/
+scan_report.html
+scan_report.txt

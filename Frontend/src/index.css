@@ -1,0 +1,169 @@
+/* Font imports must precede @tailwind directives per CSS spec */
+@import '@fontsource/jetbrains-mono/400.css';
+@import '@fontsource/jetbrains-mono/500.css';
+@import '@fontsource/jetbrains-mono/700.css';
+@import '@fontsource/inter/400.css';
+@import '@fontsource/inter/500.css';
+@import '@fontsource/inter/600.css';
+@import '@fontsource/inter/700.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 222 47% 6%;
+    --foreground: 210 40% 96%;
+
+    --card: 222 47% 8%;
+    --card-foreground: 210 40% 96%;
+
+    --popover: 222 47% 8%;
+    --popover-foreground: 210 40% 96%;
+
+    --primary: 180 70% 50%;
+    --primary-foreground: 222 47% 6%;
+
+    --secondary: 222 30% 14%;
+    --secondary-foreground: 210 40% 90%;
+
+    --muted: 222 30% 12%;
+    --muted-foreground: 215 20% 55%;
+
+    --accent: 180 70% 50%;
+    --accent-foreground: 222 47% 6%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 222 30% 18%;
+    --input: 222 30% 14%;
+    --ring: 180 70% 50%;
+
+    --radius: 0.5rem;
+
+    /* Custom cybersecurity tokens */
+    --cyber-glow: 180 70% 50%;
+    --risk-critical: 300 100% 60%;   /* Bright magenta/purple for critical */
+    --risk-high: 0 72% 51%;          /* Red */
+    --risk-medium: 38 92% 50%;       /* Amber */
+    --risk-low: 142 76% 36%;         /* Green */
+
+    --terminal-bg: 222 47% 5%;
+    --terminal-border: 180 70% 30%;
+
+    --gradient-dark: linear-gradient(135deg, hsl(222 47% 6%) 0%, hsl(222 47% 10%) 100%);
+    --gradient-card: linear-gradient(180deg, hsl(222 47% 10%) 0%, hsl(222 47% 7%) 100%);
+    --gradient-glow: linear-gradient(135deg, hsl(180 70% 50% / 0.1) 0%, hsl(180 70% 50% / 0.05) 100%);
+
+    --sidebar-background: 222 47% 6%;
+    --sidebar-foreground: 210 40% 96%;
+    --sidebar-primary: 180 70% 50%;
+    --sidebar-primary-foreground: 222 47% 6%;
+    --sidebar-accent: 222 30% 14%;
+    --sidebar-accent-foreground: 210 40% 96%;
+    --sidebar-border: 222 30% 18%;
+    --sidebar-ring: 180 70% 50%;
+  }
+
+  .dark {
+    --background: 222 47% 6%;
+    --foreground: 210 40% 96%;
+    --card: 222 47% 8%;
+    --card-foreground: 210 40% 96%;
+    --popover: 222 47% 8%;
+    --popover-foreground: 210 40% 96%;
+    --primary: 180 70% 50%;
+    --primary-foreground: 222 47% 6%;
+    --secondary: 222 30% 14%;
+    --secondary-foreground: 210 40% 90%;
+    --muted: 222 30% 12%;
+    --muted-foreground: 215 20% 55%;
+    --accent: 180 70% 50%;
+    --accent-foreground: 222 47% 6%;
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 222 30% 18%;
+    --input: 222 30% 14%;
+    --ring: 180 70% 50%;
+    --sidebar-background: 222 47% 6%;
+    --sidebar-foreground: 210 40% 96%;
+    --sidebar-primary: 180 70% 50%;
+    --sidebar-primary-foreground: 222 47% 6%;
+    --sidebar-accent: 222 30% 14%;
+    --sidebar-accent-foreground: 210 40% 96%;
+    --sidebar-border: 222 30% 18%;
+    --sidebar-ring: 180 70% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: 'Inter', sans-serif;
+  }
+
+  .font-mono {
+    font-family: 'JetBrains Mono', monospace;
+  }
+}
+
+@layer utilities {
+  .cyber-glow {
+    box-shadow: 0 0 20px hsl(var(--cyber-glow) / 0.3),
+                0 0 40px hsl(var(--cyber-glow) / 0.1);
+  }
+
+  .cyber-glow-sm {
+    box-shadow: 0 0 10px hsl(var(--cyber-glow) / 0.2);
+  }
+
+  .cyber-border {
+    border: 1px solid hsl(var(--cyber-glow) / 0.3);
+  }
+
+  .text-glow {
+    text-shadow: 0 0 10px hsl(var(--cyber-glow) / 0.5);
+  }
+
+  .scan-line {
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      hsl(var(--cyber-glow) / 0.4) 50%,
+      transparent 100%
+    );
+  }
+
+  /* Manual risk color utilities (support older class usages without opacity modifier) */
+  .risk-critical {
+    color: hsl(var(--risk-critical));
+  }
+  .risk-high {
+    color: hsl(var(--risk-high));
+  }
+  .risk-medium {
+    color: hsl(var(--risk-medium));
+  }
+  .risk-low {
+    color: hsl(var(--risk-low));
+  }
+
+  .bg-risk-critical {
+    background-color: hsl(var(--risk-critical) / 0.15);
+  }
+  .bg-risk-high {
+    background-color: hsl(var(--risk-high) / 0.15);
+  }
+  .bg-risk-medium {
+    background-color: hsl(var(--risk-medium) / 0.15);
+  }
+  .bg-risk-low {
+    background-color: hsl(var(--risk-low) / 0.15);
+  }
+}
